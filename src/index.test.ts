@@ -18,3 +18,13 @@ test("Get /api/v1/dolma", async () => {
   deepEqual(result.status, 200);
   deepEqual(result.body, []);
 });
+
+test("POST /api/v1/dolma", async () => {
+  const app = createApp();
+  const result = await request(app).post("/api/v1/dolma").send({ layers: [] });
+
+  const getResult = await request(app).get("/api/v1/dolma");
+
+  deepEqual(result.status, 200);
+  deepEqual(getResult.body, [{ layers: [] }]);
+});
