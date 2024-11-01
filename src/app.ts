@@ -8,7 +8,8 @@ export function createApp() {
   app.get("/status", (req, res) => {
     res.json({ status: "ready" });
   });
-  const dolmaFeature = createDolmaFeature({ getAll: async () => [] });
+  const db = { getAll: async () => [] };
+  const dolmaFeature = createDolmaFeature(db);
 
   app.use("/api/v1/dolma", dolmaFeature.getRouter());
   return app;
