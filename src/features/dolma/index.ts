@@ -1,7 +1,10 @@
 import express from "express";
 
-type Db = any;
+type Dolma = unknown;
 
+type Db = {
+  getAll: () => Promise<Dolma[]>;
+};
 export function createDolmaFeature(db: Db) {
   return {
     getRouter() {
