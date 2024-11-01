@@ -1,12 +1,14 @@
 import express from "express";
 
-export function createDolmaFeature() {
+type Db = any;
+
+export function createDolmaFeature(db: Db) {
   return {
     getRouter() {
       const router = express.Router();
 
-      router.get("/", (req, res) => {
-        res.json([]);
+      router.get("/", async (req, res) => {
+        res.json(await db.getAll());
       });
 
       return router;
