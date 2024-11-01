@@ -1,15 +1,5 @@
-import express from "express";
-import { create } from "node:domain";
+import { createApp } from "./app";
 
-export function createApp() {
-  const app = express();
-
-  app.get("/status", (req, res) => {
-    res.json({ status: "ready" });
-  });
-  return app;
-}
-
-createApp().listen(3000, () => {
+createApp().listen(3002, () => {
   console.log(`Server started on hhtp://localhost:3000`);
 });
